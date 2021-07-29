@@ -19,10 +19,15 @@ type Handler struct {
 }
 
 func (h *Handler) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
+	fmt.Println("Request received, printing all headers....")
+	for name, values := range req.Header {
+		for _, value := range values {
+			fmt.Println(name, value)
+		}
+	}
 	authenticated := req.Header.Get(strings.ToLower(UserTokenAuthenticated))
 	if authenticated != "true" {
 		rErr(resp, 403, "unauthenticated")
-
 		return
 	}
 	isTokenRefreshed := req.Header.Get(strings.ToLower(IsUserTokenRefreshed))
