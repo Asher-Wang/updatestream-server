@@ -1,0 +1,29 @@
+name: Build Images
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+
+      - name: Build HTTP container image
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: |
+            asher4hs/upstream-server:latest
+            asher4hs/upstream-server:${{ github.sha }}
