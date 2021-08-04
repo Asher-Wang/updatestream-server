@@ -27,3 +27,5 @@ jobs:
           tags: |
             asher4hs/upstream-server:latest
             asher4hs/upstream-server:${{ github.sha }}
+          secrets: |
+            "github_token=${{ secrets.GITHUB_TOKEN }}"

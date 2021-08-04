@@ -2,6 +2,8 @@ FROM golang:1.16
 
 WORKDIR /app
 
+RUN git config --global url."git@github.com:hotstar".insteadOf "https://github.com/hotstar"
+
 COPY go.mod .
 COPY go.sum .
 
