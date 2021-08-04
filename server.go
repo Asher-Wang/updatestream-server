@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strings"
+	// "strings"
 )
 
 var port = 3000
@@ -25,20 +25,20 @@ func (h *Handler) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 			fmt.Println(name, value)
 		}
 	}
-	authenticated := req.Header.Get(strings.ToLower(UserTokenAuthenticated))
-	if authenticated != "true" {
-		rErr(resp, 403, "unauthenticated")
-		return
-	}
-	isTokenRefreshed := req.Header.Get(strings.ToLower(IsUserTokenRefreshed))
-	if isTokenRefreshed == "true" {
-		refreshedToken := req.Header.Get(strings.ToLower(UserTokenHeader))
-		if refreshedToken == "" {
-			rErr(resp, 403, "Empty passport")
-			return
-		}
-		resp.Header().Add(UserTokenHeader, refreshedToken)
-	}
+	// authenticated := req.Header.Get(strings.ToLower(UserTokenAuthenticated))
+	// if authenticated != "true" {
+	// 	rErr(resp, 403, "unauthenticated")
+	// 	return
+	// }
+	// isTokenRefreshed := req.Header.Get(strings.ToLower(IsUserTokenRefreshed))
+	// if isTokenRefreshed == "true" {
+	// 	refreshedToken := req.Header.Get(strings.ToLower(UserTokenHeader))
+	// 	if refreshedToken == "" {
+	// 		rErr(resp, 403, "Empty passport")
+	// 		return
+	// 	}
+	// 	resp.Header().Add(UserTokenHeader, refreshedToken)
+	// }
 
 	resp.Header().Add("Content-Type", "application/json")
 }
