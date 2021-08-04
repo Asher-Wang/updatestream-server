@@ -2,7 +2,7 @@ FROM golang:1.16
 
 WORKDIR /app
 
-RUN git config --global url."git@github.com:hotstar".insteadOf "https://github.com/hotstar"
+RUN --mount=type=secret,id=github_token git config --global url."https://$(cat /run/secrets/github_token)@github.com/hotstar".insteadOf "https://github.com/hotstar"
 
 COPY go.mod .
 COPY go.sum .
