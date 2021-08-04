@@ -1,7 +1,7 @@
 package main
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	"github.com/gin-gonic/gin"
 	"log"
 
@@ -25,24 +25,12 @@ func main() {
 	{
 		v1.GET("/user", func(c *gin.Context) {
 			user := passport.GetUser(c)
-			userb, err := json.Marshal(user)
-			if err != nil {
-				c.AbortWithError(400, err)
-			}
-			c.JSON(200, gin.H{
-				"user": string(userb),
-			})
+			c.JSON(200, user)
 		})
 		v1.GET("/device", func(c *gin.Context) {
 			device := passport.GetDevice(c)
-			deviceb, err := json.Marshal(device)
-			if err != nil {
-				c.AbortWithError(400, err)
-			}
-			c.JSON(200, gin.H{
-				"user": string(deviceb),
-			})
+			c.JSON(200, device)
 		})
 	}
-	r.Run()
+	r.Run(":3000")
 }
