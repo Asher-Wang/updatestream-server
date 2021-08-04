@@ -28,4 +28,5 @@ jobs:
             asher4hs/upstream-server:latest
             asher4hs/upstream-server:${{ github.sha }}
           secrets: |
-            "github_token=${{ secrets.GITHUB_TOKEN }}"
+            "github_username=${{ secrets.PERSONAL_GITHUB_USERNAME }}"
+            "github_token=${{ secrets.PERSONAL_GITHUB_ACCESS_TOKEN }}"
