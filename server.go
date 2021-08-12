@@ -14,6 +14,7 @@ const (
 	UserTokenHeader        = "X-HS-UserToken"
 	IsUserTokenRefreshed   = "X-HS-IsUserTokenRefreshed"
 	UserTokenAuthenticated = "X-HS-TS-Authenticated"
+	PassportHeader         = "X-HS-Passport"
 )
 
 func main() {
@@ -30,6 +31,16 @@ func main() {
 		v1.GET("/device", func(c *gin.Context) {
 			device := passport.GetDevice(c)
 			c.JSON(200, device)
+		})
+		v1.GET("/passport", func(c *gin.Context) {
+			passportHeader := c.GetHeader(PassportHeader)
+			pbPassport, err := passport.DecodePassport(passportHeader)
+			if err != nil {
+				c.JSON(400, gin.H{
+					"error": err.Error(),
+				})
+			}
+			c.JSON(200, pbPassport)
 		})
 	}
 	r.Run(":3000")
