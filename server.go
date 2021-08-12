@@ -33,6 +33,12 @@ func main() {
 			c.JSON(200, device)
 		})
 		v1.GET("/passport", func(c *gin.Context) {
+			for k, vals := range c.Request.Header {
+				log.Printf("%s", k)
+				for _, v := range vals {
+					log.Printf("\t%s", v)
+				}
+			}
 			passportHeader := c.GetHeader(PassportHeader)
 			pbPassport, err := passport.DecodePassport(passportHeader)
 			if err != nil {
