@@ -1,19 +1,19 @@
-FROM golang:1.16
+# syntax=docker/dockerfile:experimental
 
+# build state
+FROM golang:alpine AS builder
+RUN apk update && apk upgrade && apk add --no-cache make gcc git libc-dev openssh-client ca-certificates && rm -rf /var/cache/apk/*
+RUN mkdir ~/.ssh /app
+RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN git config --global url."git@github.com:hotstar".insteadOf "https://github.com/hotstar"
+
+ENV GOPATH=/go
+COPY dummy-domain-service /go/src/github.com/hotstar/dummy-domain-service
+WORKDIR /go/src/github.com/hotstar/dummy-domain-service
+RUN --mount=type=ssh,id=github go get -v .
+RUN GOOS=linux go build -ldflags "-X main.version=$(git describe --tags --abbrev=0).$(git rev-parse --short HEAD)" -o /app/dummy-domain-service .
+
+FROM alpine
 WORKDIR /app
-
- 
-# RUN --mount=type=secret,id=github_token echo "[url \"https://$(cat /run/secrets/github_token)@github.com/hotstar\"]\n\tinsteadOf = https://github.com/hotstar" >> /root/.gitconfig
-RUN --mount=type=secret,id=github_username --mount=type=secret,id=github_token git config --global url."https://$(cat /run/secrets/github_username):$(cat /run/secrets/github_token)@github.com/hotstar".insteadOf "https://github.com/hotstar"
-RUN cat /root/.gitconfig
-
-COPY go.mod .
-COPY go.sum .
-
-RUN go mod download
-
-COPY . .
-
-RUN GOOS=linux GOARCH=amd64 go build server.go
-
-ENTRYPOINT [ "/app/server" ]
+COPY --from=builder /app/dummy-domain-service /app/
+ENTRYPOINT ["./dummy-domain-service"]
