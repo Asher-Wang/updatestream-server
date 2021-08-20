@@ -24,10 +24,8 @@ github.com/golang/protobuf v1.5.2/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiu
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/gofuzz v1.0.0/go.mod h1:dBl0BpW6vV/+mYPU4Po3pmUjxk6FQPldtuIdl/M65Eg=
-github.com/hotstar/passport-go v0.0.0-20210803062753-dc8c97eff312 h1:4MzRtKHnH+SGrSVmPjFaVgiQrQ55APldW5mtRX94R/w=
-github.com/hotstar/passport-go v0.0.0-20210803062753-dc8c97eff312/go.mod h1:ZH7mVKR52XhbbtBLqBiAoVhs2qE+ZKpw6Ujp+uPlins=
-github.com/hotstar/passport-go v0.0.0-20210810031600-02b9ecef9f6a h1:n1A4wlnur4ZmAxdA3OnwsnW+ZJNfeY5z0N00LVEzsPw=
-github.com/hotstar/passport-go v0.0.0-20210810031600-02b9ecef9f6a/go.mod h1:ZH7mVKR52XhbbtBLqBiAoVhs2qE+ZKpw6Ujp+uPlins=
+github.com/hotstar/passport-go v0.0.0-20210820034756-a5412068fcea h1:9vMW860j6Dc4fskREuhkFLkHDCviFj/WgxQU7+6S7E4=
+github.com/hotstar/passport-go v0.0.0-20210820034756-a5412068fcea/go.mod h1:ZH7mVKR52XhbbtBLqBiAoVhs2qE+ZKpw6Ujp+uPlins=
 github.com/json-iterator/go v1.1.9/go.mod h1:KdQUCv79m/52Kvf8AW2vK1V8akMuk1QjK/uOdHXbAo4=
 github.com/json-iterator/go v1.1.11 h1:uVUAXhF2To8cbw/3xN3pxj6kk7TYKs98NIrTqPlMWAQ=
 github.com/json-iterator/go v1.1.11/go.mod h1:KdQUCv79m/52Kvf8AW2vK1V8akMuk1QjK/uOdHXbAo4=
