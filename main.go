@@ -3,6 +3,7 @@ package main
 import (
 	// "encoding/json"
 	"log"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 
@@ -22,6 +23,11 @@ func main() {
 	log.Printf("Auth service (HTTP) running on  %d...\n", port)
 
 	r := gin.Default()
+	r.GET("/health", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"status": "ok",
+		})
+	})
 	v1 := r.Group("/v1")
 	v1.Use(passport.PassportMiddleware())
 	{
