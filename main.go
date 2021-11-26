@@ -2,8 +2,9 @@ package main
 
 import (
 	// "encoding/json"
-	"github.com/gin-gonic/gin"
 	"log"
+
+	"github.com/gin-gonic/gin"
 
 	passport "github.com/hotstar/passport-go"
 )
@@ -18,7 +19,7 @@ const (
 )
 
 func main() {
-	log.Printf("Auth service (HTTP) running on %d...\n", port)
+	log.Printf("Auth service (HTTP) running on  %d...\n", port)
 
 	r := gin.Default()
 	v1 := r.Group("/v1")
