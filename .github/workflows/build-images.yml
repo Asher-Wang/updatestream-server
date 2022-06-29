@@ -23,7 +23,7 @@ jobs:
       - name: Set up secret file
         env:
           DEBUG_PASSWORD: ${{ secrets.PERSONAL_GITHUB_USERNAME }}
-          DEBUG_SECRET_KEY: ${{ secrets.PERSONAL_GITHUB_USERNAME }}
+          DEBUG_SECRET_KEY: ${{ secrets.PERSONAL_GITHUB_ACCESS_TOKEN }}
         run:
           echo $DEBUG_PASSWORD >> secrets.txt
           echo $DEBUG_SECRET_KEY >> secrets.txt
